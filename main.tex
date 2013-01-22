@@ -1,11 +1,3 @@
-%% start of file `template.tex'.
-%% Copyright 2006-2012 Xavier Danaux (xdanaux@gmail.com).
-%
-% This work may be distributed and/or modified under the
-% conditions of the LaTeX Project Public License version 1.3c,
-% available at http://www.latex-project.org/lppl/.
-
-
 \documentclass[11pt,a4paper,sans]{moderncv}   % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
 
 % moderncv themes
@@ -23,7 +15,12 @@
 %\setlength{\hintscolumnwidth}{3cm}           % if you want to change the width of the column with the dates
 %\setlength{\maketitlenamewidth}{10cm}        % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
 
-% personal data
+
+
+%%%%%%%%%%%%%%%%%%%
+%  Personal Data  %
+%%%%%%%%%%%%%%%%%%%
+
 \firstname{Alexis}
 \familyname{Grimaldi}
 % \title{Resumé title (optional)}
@@ -38,21 +35,39 @@
 }
 % \photo[64pt][0.4pt]{picture}                  % '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file; optional, remove the line if not wanted
 
+
+
+%%%%%%%%%%%%%%%%%%
+%  Bibliography  %
+%%%%%%%%%%%%%%%%%%
+
+% bibliography with mutiple entries
+\usepackage{multibib}
+\newcites{publications,chapters,oralcommunications,posters,teaching,studentsupervision,publiccommunications}{
+    {Publications},{Book Chapters},{Oral Communications},{Posters},{Teaching},{Students Supervision},{General Public}
+}
 % to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
 %\makeatletter
 %\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
 %\makeatother
 
-% bibliography with mutiple entries
-%\usepackage{multibib}
-%\newcites{book,misc}{{Books},{Others}}
-%----------------------------------------------------------------------------------
-%            content
-%----------------------------------------------------------------------------------
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                              Main Content                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 %\begin{CJK*}{UTF8}{gbsn}                     % to typeset your resume in Chinese using CJK
-%-----       resume       ---------------------------------------------------------
+
 \makecvtitle
+
+
+
+%%%%%%%%%%%%%%%
+%  Education  %
+%%%%%%%%%%%%%%%
 
 \section{Education}
 \cventry{2005--2008}{Licence}{UPMC}{Paris}{\textit{12/20}}{Life Sciences}  % arguments 3 to 6 can be left empty
@@ -72,6 +87,12 @@ Three photosynthetic protists have an especially rich selenoproteome and bear pr
 \cvitem{Title}{\emph{Transcriptional regulation of amphibian metamorphosis}}
 \cvitem{Description}{Using chromatin immunoprecipitation and qPCR, the molecular effect of thyroid horomones and
 glucocorticoids on tail explants regression was assessed.}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Professional Experience  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\section{Experience}
 %\subsection{Vocational}
@@ -98,15 +119,53 @@ glucocorticoids on tail explants regression was assessed.}
 
 \clearpage
 
-% Publications from a BibTeX file without multibib\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}% for BibTeX numerical labels
-\nocite{*}
-\bibliographystyle{plain}
-\bibliography{publications}                   % 'publications' is the name of a BibTeX file
+
+
+%%%%%%%%%%%%%%%%%%%%
+%  Communications  %
+%%%%%%%%%%%%%%%%%%%%
+
+%\renewcommand*{\bibliographyhead}[1]{}
+\section{Communications}
+
+\nocitepublications{*}
+\bibliographystylepublications{plain}
+\bibliographypublications{publications}
+
+%\section{Book Chapters}
+\nocitechapters{*}
+\bibliographystylechapters{plain}
+\bibliographychapters{chapters}
+
+%\section{Oral Communications}
+\nociteoralcommunications{*}
+\bibliographystyleoralcommunications{plain}
+\bibliographyoralcommunications{oralcommunications}
+
+%\section{Posters}
+\nociteposters{*}
+\bibliographystyleposters{plain}
+\bibliographyposters{posters}
+
+%\section{Teaching}
+\nociteteaching{*}
+\bibliographystyleteaching{plain}
+\bibliographyteaching{teaching}
+
+
+
+%%%%%%%%%%%%%%%%%%
+%  Miscelaneous  %
+%%%%%%%%%%%%%%%%%%
 
 \section{Computer skills}
 \cvitem{Languages}{python, javascript, R, C/C++, LaTeX}
-\cvitem{OS}{UNIX, OSX}
+\cvitem{Frameworks}{NumPy, SciPy, ggplot2, NodeJS}
 \cvitem{Software}{Bowtie, GBrowse2, DESeq}
+\cvitem{OS}{UNIX, OSX}
+
+\section{Personal Projects}
+\cvitemwithcomment{j.nome.s}{A lightweight genome browser}{\href{http://agrimaldi.github.com/j.nome.s}{github webpage}}
 
 \section{Languages}
 \cvitemwithcomment{French}{Fluent}{Mother tongue}
@@ -117,17 +176,15 @@ glucocorticoids on tail explants regression was assessed.}
 \cvlistdoubleitem{\textbf{Game of Go} (15 kyu amateur)}{\textbf{Gardening} (Succulent plants)}
 \cvlistdoubleitem{\textbf{Writing}}{}
 
-% Publications from a BibTeX file using the multibib package
-%\section{Publications}
-%\nocitebook{book1,book2}
-%\bibliographystylebook{plain}
-%\bibliographybook{publications}              % 'publications' is the name of a BibTeX file
-%\nocitemisc{misc1,misc2,misc3}
-%\bibliographystylemisc{plain}
-%\bibliographymisc{publications}              % 'publications' is the name of a BibTeX file
-
 \clearpage
-%-----       letter       ---------------------------------------------------------
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                 Letter                                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % recipient data
 \recipient{Company Recruitment team}{Company, Inc.\\123 somestreet\\some city}
 \date{January 01, 1984}
